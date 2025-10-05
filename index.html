@@ -43,6 +43,16 @@
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         border-bottom: none;
       }
+      #category-container {
+        scroll-padding: 0 1rem; /* Add padding when scrolling items into view */
+      }
+      #category-container::-webkit-scrollbar {
+        display: none; /* Hide for Safari/Chrome */
+      }
+      #category-container {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
       .active-category {
         background-color: #9333ea; /* purple-600 */
         color: white;
@@ -63,24 +73,23 @@
 </head>
   <body class="text-gray-800">
     <!-- Header -->
-    <header class="relative bg-white shadow-md">
-        <!-- Cover Photo Area -->
-        <img class="w-full h-40 sm:h-56 object-cover" src="https://www2.0zz0.com/2025/10/05/21/994450874.jpg" alt="صورة المطعم">
+    <header class="relative w-full h-64 sm:h-80 bg-cover bg-center bg-fixed" style="background-image: url('https://www2.0zz0.com/2025/10/05/00/114989734.jpg');">
+        <!-- Dark overlay for better parallax feel and contrast -->
+        <div class="absolute inset-0 bg-black/20"></div>
         
-        <!-- Profile & Name Area -->
-        <div class="container mx-auto px-4">
-            <div class="relative -mt-16 sm:-mt-20 flex flex-col items-center text-center">
-                <!-- Logo -->
-                <div class="relative flex-shrink-0">
-                    <img class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-white bg-white shadow-lg object-cover" 
-                         src="https://www2.0zz0.com/2025/10/05/00/766456769.jpg" 
-                         alt="شعار مطعم المجنون">
-                </div>
-
+        <!-- Content container that holds the card -->
+        <div class="relative h-full flex items-center justify-center p-4">
+            <!-- The card itself -->
+            <div class="bg-white/95 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl text-center max-w-md sm:max-w-xl w-full">
+                 <!-- Logo popping out of the card -->
+                <img class="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white shadow-lg object-cover mx-auto -mt-20 sm:-mt-24" 
+                     src="https://www2.0zz0.com/2025/10/05/00/766456769.jpg" 
+                     alt="شعار مطعم المجنون">
+    
                 <!-- Name and Slogan -->
                 <div class="mt-4">
                     <h1 class="text-3xl sm:text-5xl font-extrabold text-purple-700" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">المجنون للكشرى والكريب</h1>
-                    <p class="text-gray-600 mt-2 text-md sm:text-lg">طعم أصيل يجمعنا</p>
+                    <p class="text-gray-700 mt-2 text-md sm:text-lg">طعم أصيل يجمعنا</p>
                 </div>
             </div>
         </div>
@@ -88,7 +97,7 @@
 
     <!-- Category Navigation -->
     <nav id="category-nav" class="sticky top-0 bg-white z-20 py-2 border-b-2 border-gray-200 transition-shadow duration-300">
-      <div id="category-container" class="container mx-auto flex justify-center items-center flex-wrap gap-2 px-2">
+      <div id="category-container" class="container mx-auto flex items-center overflow-x-auto gap-3 px-4">
         <!-- Categories will be inserted here by JS -->
       </div>
     </nav>
@@ -102,11 +111,29 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white p-6 mt-12">
       <div class="container mx-auto text-center">
-        <h3 class="text-xl font-bold mb-2">مطعم المجنون</h3>
-        <p>للتواصل والطلبات: 01144979054 - 01034277619 - 01227511149</p>
-        <p class="mt-4 text-gray-400 text-sm">&copy; 2024. كل الحقوق محفوظة.</p>
+        <h3 class="text-xl font-bold mb-4">مطعم المجنون</h3>
+        <div class="space-y-4">
+          <div class="flex items-center justify-center gap-3">
+            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+            <span>حدائق اكتوبر - منطقة 390 فدان - الممشى السياحى</span>
+          </div>
+          <div class="flex items-center justify-center gap-3">
+            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.76a11.024 11.024 0 006.25 6.25l.76-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+            <span>
+              <a href="tel:01144979054" class="hover:underline">01144979054</a> | 
+              <a href="tel:01034277619" class="hover:underline">01034277619</a> | 
+              <a href="tel:01227511149" class="hover:underline">01227511149</a>
+            </span>
+          </div>
+          <div class="flex items-center justify-center gap-3">
+            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 2.83a.5.5 0 00-.43-.24h-1.54a.5.5 0 00-.49.36L12 5.83a.5.5 0 00.11.51l.88.88a.5.5 0 00.7 0l.01-.01c.2-.2.2-.52 0-.72l-.88-.88a2.5 2.5 0 01-.35-3.23L13.1 1.5a.5.5 0 00-.36-.5H11.17a.5.5 0 00-.49.36L9.64 3.4a.5.5 0 00.1.51l.88.88a.5.5 0 00.7 0l.01-.01a.5.5 0 000-.72l-.88-.88a2.5 2.5 0 01-.35-3.23L10.3.5a.5.5 0 00-.36-.5H8.38a.5.5 0 00-.49.36l-1.04 2.08a.5.5 0 00.1.51l.88.88a.5.5 0 00.7 0l.01-.01a.5.5 0 000-.72l-.88-.88A2.5 2.5 0 016.92.5a.5.5 0 00-.36-.5H4.92a.5.5 0 00-.49.36L3.39 2.4a.5.5 0 00.1.51l.88.88a.5.5 0 00.7 0l.01-.01c.2-.2.2-.52 0-.72l-.88-.88a2.5 2.5 0 01-.35-3.23L4.6.5a.5.5 0 00-.36-.5H2.67a.5.5 0 00-.5.5v16a.5.5 0 00.5.5h14.67a.5.5 0 00.5-.5v-14a.5.5 0 00-.5-.5h-1.67zM17 17H3V3h1.33l-1.4 2.8a.5.5 0 00.36.7l.88.88a.5.5 0 00.7 0l.01-.01c.2-.2.2-.52 0-.72l-.88-.88a2.5 2.5 0 01-.35-3.23L4.92 1h1.66l-1.4 2.8a.5.5 0 00.36.7l.88.88a.5.5 0 00.7 0l.01-.01a.5.5 0 000-.72l-.88-.88a2.5 2.5 0 01-.35-3.23L8.38 1h1.79l-1.4 2.8a.5.5 0 00.36.7l.88.88a.5.5 0 00.7 0l.01-.01a.5.5 0 000-.72l-.88-.88a2.5 2.5 0 01-.35-3.23L11.17 1h1.59l-1.4 2.8a.5.5 0 00.36.7l.88.88a.5.5 0 00.7 0l.01-.01a.5.5 0 000-.72l-.88-.88a2.5 2.5 0 01-.35-3.23L13.5 1h1.5a.5.5 0 00.43-.24l1.34-2.67a.5.5 0 00-.43-.76H3.5a.5.5 0 00-.5.5v16a.5.5 0 00.5.5h14a.5.5 0 00.5-.5v-14zM16.5 2a.5.5 0 00-.5.5v14a.5.5 0 00.5.5h1a.5.5 0 00.5-.5v-14a.5.5 0 00-.5-.5h-1z"></path></svg>
+            <a href="https://wa.me/201034277619" target="_blank" rel="noopener noreferrer" class="hover:underline">01034277619 (WhatsApp)</a>
+          </div>
+        </div>
+        <p class="mt-6 text-gray-400 text-sm">&copy; 2025. كل الحقوق محفوظة.</p>
       </div>
     </footer>
+
 
     <!-- Floating Cart Button -->
     <button id="floating-cart-button" class="fixed bottom-6 left-6 bg-purple-600 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center z-30 hover:bg-purple-700 transition-transform transform hover:scale-110">
@@ -160,6 +187,13 @@
         <button id="confirmation-close-button" class="w-full px-6 py-2 text-white bg-green-600 rounded-lg hover:bg-green-700">حسنًا</button>
       </div>
     </div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top-button" class="fixed bottom-6 right-6 bg-purple-600 text-white rounded-full shadow-lg w-14 h-14 flex items-center justify-center z-30 hover:bg-purple-700 transition-all duration-300 transform hover:scale-110 opacity-0 invisible">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
     
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -364,6 +398,7 @@
         const confirmationModal = getEl('confirmation-modal');
         const confirmationCloseButton = getEl('confirmation-close-button');
         const categoryContainer = getEl('category-container');
+        const scrollToTopButton = getEl('scroll-to-top-button');
 
         // --- RENDER FUNCTIONS ---
         const renderPriceAndButton = (item) => {
@@ -401,7 +436,7 @@
           menuContainer.innerHTML = menuData.map(category => `
             <section id="category-${category.title.replace(/\s+/g, '-')}" class="mb-12">
               <h2 class="text-3xl font-bold text-purple-800 border-b-4 border-purple-200 pb-2 mb-6">${category.title}</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 ${category.items.map(item => `
                   <div class="bg-white rounded-lg shadow-md flex flex-row items-center p-4 gap-4 transition-shadow hover:shadow-lg">
                     <img src="https://www2.0zz0.com/2025/10/05/00/766456769.jpg" alt="${item.name}" class="w-24 h-24 object-cover rounded-md flex-shrink-0">
@@ -423,7 +458,7 @@
             const categories = menuData.map(c => c.title);
             const allCategories = ['الكل', ...categories];
             categoryContainer.innerHTML = allCategories.map(title => `
-                <button data-category-title="${title}" class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${title === 'الكل' ? 'active-category' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}">
+                <button data-category-title="${title}" class="category-btn flex-shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${title === 'الكل' ? 'active-category' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}">
                     ${title}
                 </button>
             `).join('');
@@ -520,7 +555,7 @@
             const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
             const total = subtotal + DELIVERY_FEE;
             
-            let orderMessage = `*طلب جديد من مطعم المجنزن*\n\n`;
+            let orderMessage = `*طلب جديد من مطعم المجنون*\n\n`;
             orderMessage += `*العميل:* ${getEl('name').value}\n`;
             orderMessage += `*رقم التواصل:* ${getEl('phone').value}\n`;
             orderMessage += `*العنوان:* عمارة ${getEl('building').value}, شقة ${getEl('apartment').value}\n`;
@@ -596,26 +631,37 @@
             const button = e.target.closest('.category-btn');
             if (!button) return;
 
+            // Scroll the clicked button into view on mobile/overflow
+            button.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',
+                block: 'nearest'
+            });
+
+            // Update active button style
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.classList.remove('active-category');
                 btn.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
             });
-
             button.classList.add('active-category');
             button.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
 
+            // Filter logic
             const categoryTitle = button.dataset.categoryTitle;
-            if (categoryTitle === 'الكل') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                const sectionId = `category-${categoryTitle.replace(/\s+/g, '-')}`;
-                const section = getEl(sectionId);
-                if (section) {
-                    const stickyNavHeight = getEl('category-nav').offsetHeight;
-                    const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - stickyNavHeight - 20; // 20px offset
-                    window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+            const allSections = document.querySelectorAll('#menu-container > section');
+
+            allSections.forEach(section => {
+                if (categoryTitle === 'الكل') {
+                    section.classList.remove('hidden');
+                } else {
+                    const sectionId = `category-${categoryTitle.replace(/\s+/g, '-')}`;
+                    if (section.id === sectionId) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
                 }
-            }
+            });
         });
         
         // --- Modal and Sidebar toggles ---
@@ -633,6 +679,23 @@
           resetOrder();
         });
 
+        // --- Scroll to top button ---
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopButton.classList.remove('opacity-0', 'invisible');
+                scrollToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopButton.classList.remove('opacity-100', 'visible');
+                scrollToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
         // --- INITIALIZATION ---
         renderMenu();
         renderCategories();
@@ -641,5 +704,3 @@
     </script>
   </body>
 </html>
-
-
